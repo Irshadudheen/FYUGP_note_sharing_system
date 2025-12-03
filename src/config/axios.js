@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {env} from "@/config/env.js";
-import useAuthStore from "@/store/authStore.js";
+import useAuthStore from "../store/authstore.js";
 
 const BASE_URL = env.API_URL;
 
