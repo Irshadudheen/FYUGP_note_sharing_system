@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />, 
     children: [
-      { path: "/", element: <ConditionalLanding /> },
+      { path: "/", element: <LandingPage/> },
       {
         path: "profile/student",
         element: (
