@@ -15,9 +15,9 @@ export default function HomePage() {
         <StatsSection />
         <FeaturesSection />
         <HowItWorksSection />
-        {/* <CTASection /> */}
+        <CTASection />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

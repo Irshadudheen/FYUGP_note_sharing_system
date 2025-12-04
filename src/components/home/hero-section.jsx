@@ -3,7 +3,7 @@ import { ArrowRight, Upload, Download } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8 lg:py-20">
       <div className="container mx-auto">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left Content */}

@@ -60,6 +60,19 @@ export function LoginForm({ userType, title, description }) {
               />
             </div>
 
+            
+             <div className="space-y-1">
+            <label className="text-sm font-medium">Admission Number</label>
+            <input
+              type="text"
+              placeholder="Enter your admission number"
+              value={admissionNo}
+              onChange={(e) => setAdmissionNo(e.target.value)}
+              required
+              className="w-full h-11 px-3 rounded-md border border-input bg-background focus:ring-2 focus:ring-primary outline-none"
+            />
+          </div>
+
             {/* Department */}
             <div className="space-y-1">
               <label className="text-sm font-medium">Department</label>
@@ -156,7 +169,7 @@ export function LoginForm({ userType, title, description }) {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full h-11 rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition"
+          className="w-full h-11 border hover:bg-black hover:text-white rounded-md bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition"
         >
           {isSignup ? "Create Account" : "Sign In"}
         </button>

@@ -17,13 +17,13 @@ export function CTASection() {
               Join thousands of FYUGP students who are already sharing knowledge and acing their exams together.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-              <button size="lg" className="gap-2">
-                Get Started Free
-                <ArrowRight className="h-4 w-4" />
-              </button>
-              <button size="lg" variant="outline">
-                Learn More
-              </button>
+             <button className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-md text-lg font-medium border border-primary hover:bg-primary/90 hover:shadow-lg transition">
+  Get Started Free
+  <ArrowRight className="h-4 w-4" />
+</button>
+             <button className="flex items-center gap-2 px-6 py-2 rounded-md text-lg font-medium border border-primary text-primary hover:bg-primary/10 transition">
+  Learn More
+</button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">
               No credit card required • Free forever • Join in 30 seconds
