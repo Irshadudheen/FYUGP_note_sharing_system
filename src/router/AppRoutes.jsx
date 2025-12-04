@@ -10,6 +10,9 @@ import ForgotPassword from "../components/user/auth/forgotPassowrd.jsx";
 import UnProtectedRoute from "./UnProtectedRoutes";
 import ProtectedRoute from "./ProtectedRoutes";
 import OnboardingForm from "../pages/profile/onBoarding.jsx";
+import StudentLoginPage from "../pages/auth/student/page.jsx";
+import TeacherLoginPage from "../pages/auth/teacher/page.jsx";
+import AdminLoginPage from "../pages/auth/admin/page.jsx";
 
 
 
@@ -22,6 +25,9 @@ export const router = createBrowserRouter([
     element: <AppLayout />, 
     children: [
       { path: "/", element: <LandingPage/> },
+      {path:'student-login', element: <StudentLoginPage userType="student"/>},
+      {path:'teacher-login', element: <TeacherLoginPage userType="teacher"/>},
+      {path:'adimn-login', element: <AdminLoginPage userType="admin"/>},
       {
         path: "profile/student",
         element: (
@@ -61,21 +67,8 @@ export const router = createBrowserRouter([
     ],
   },
 
-  // Auth routes outside layout
-  {
-    path: "auth/employer",
-    element: (<UnProtectedRoute><LoginPage role="employer" /></UnProtectedRoute>),
-  },
-  {
-    path: "auth/employee",
-    element: (
-      <UnProtectedRoute>
-        <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-          <LoginPage role="employee" />
-        </GoogleOAuthProvider>
-      </UnProtectedRoute>
-    ),
-  },
+  
+  ,
   { path: "otp-verification", element: <InputOtpForm /> },
   { path: "reset-password", element: <div>Reset Password</div> },
   { path: "employee/forgot-password", element: <ForgotPassword /> },
