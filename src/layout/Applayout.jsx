@@ -9,7 +9,7 @@ function Applayout() {
         {/* This is where child routes will render */}
         <Outlet />
       </main>
-      <footer>My Footer (optional)</footer>
+      
     </div>
   )
 }
