@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
-
+import {registerStudentSchema} from "../schema/authschema";
 export function LoginForm({ userType, title, description }) {
   const [showPassword, setShowPassword] = useState(false)
   const [email, setEmail] = useState("")
