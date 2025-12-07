@@ -84,7 +84,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} NotesHub. All rights reserved.| Developed by <a href="http://www.linkedin.com/in/irshadudheenp" className="underline" target="_blank" rel="noopener noreferrer">Irshadudheen P</a></p>
+          <p>© {new Date().getFullYear()} Kotta Note. All rights reserved.| Developed by <a href="http://www.linkedin.com/in/irshadudheenp" className="underline" target="_blank" rel="noopener noreferrer">Irshadudheen P</a></p>
         </div>
       </div>
     </footer>
