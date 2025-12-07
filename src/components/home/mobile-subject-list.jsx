@@ -82,7 +82,7 @@ export function MobileSubjectList() {
     )
 
   return (
-    <div className="space-y-6 py-8">
+    <div className="space-y-6 py-8 ">
       {/* Heading */}
       <div className="text-center space-y-2 mb-8">
         <h1 className="text-3xl font-bold text-foreground">Browse Notes by Subject</h1>
