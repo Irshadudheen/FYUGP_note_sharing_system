@@ -2,37 +2,68 @@ import { Book, GraduationCap, Library } from "lucide-react"
 
 export function MobileSubjectList() {
   const majorSubjects = [
-    "Computer Science",
-    "Mathematics",
-    "Physics",
-    "Chemistry",
-    "Biology",
-    "English Literature",
-    "History",
-    "Economics",
+    "B.A. Economics Honours",
+    "B.A. English Honours",
+    "B.A. West Asian Studies Honours",
+    "B.Com with Computer Application Honours",
+    "B.Com with Co-operation Honours",
+    "B.Sc. Biotechnology Honours(SF)",
+    "B.Sc. Computer Science Honours",
+    "B.Sc. Microbiology Honours",
+    "B.Sc.Biochemistry Honours(SF)",
+    "Bachelor of Business Administration Honours (SF)",
+    "BSc Mathematics and Physics Honours(Double Major)",
+    "BVoc Islamic Finance",
+    "BVoc Logistics Management",
+    "BVoc Professional Accounting and Taxation"
+
   ]
 
   const minorSubjects = [
-    "Data Science",
-    "Artificial Intelligence",
-    "Web Development",
-    "Mobile App Development",
-    "Digital Marketing",
-    "Psychology",
-    "Business Management",
-    "Statistics",
-  ]
+  "Marketing Management",
+  "Communicating With Financial Data",
+  "Foundations of Modern Banking",
+  "Basics of Financial Markets",
+  "Fundamentals of Financial Accounting",
+  "Essentials of Cost Accounting",
+  "Biochemistry",
+  "Introduction to Biochemistry",
+  "Fundamentals of Biotechnology",
+  "Computer Fundamentals With MS Excel SPSS",
+  "Introduction to IT",
+  "Fundamentals of Content Creation",
+  "The Language of Digital Space: English and New Media",
+  "Introduction to Microbiology",
+  "Basics of Communication",
+  "Introduction to Mass Communication",
+  "Mathematical Logic, Set Theory and Combinatorics",
+  "Human Rights",
+  "Indian Constitution",
+  "Basic Statistics",
+  "Fundamentals of Data Analysis",
+  "Basics of Translation",
+  "Modern Indian History",
+  "Basic Inorganic and Bio Inorganic"
+]
+
 
   const mdcCourses = [
-    "Environmental Studies",
-    "Indian Constitution",
-    "Digital Literacy",
-    "Communication Skills",
-    "Ethics and Values",
-    "Research Methodology",
-    "Entrepreneurship",
-    "Health and Wellness",
-  ]
+  "Creativity, Innovation & Business Development",
+  "Introducing Print and Digital Narratives",
+  "Elementary Arabic",
+  "The Art of Photography",
+  "Fundamentals of Statistics",
+  "Stock Market Fundamentals",
+  "Data Analysis and Visualization through Spreadsheet",
+  "Security Trading Practices",
+  "Physics in Daily Life",
+  "Mathematics for Competitive Examinations",
+  "Microorganisms in Daily Life",
+  "Yoga and Stress Management",
+  "Historical Tourism in Kerala",
+  "Food Biochemistry and Quality Control",
+  "Hindi Cinema Mein Samajik Sarokar"
+]
 
   return (
     <div className="space-y-6 py-8">
