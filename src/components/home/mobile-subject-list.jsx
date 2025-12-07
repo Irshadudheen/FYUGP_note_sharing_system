@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Book, GraduationCap, Library, Search } from "lucide-react"
+import { Book, GraduationCap, Library, Search ,Brain} from "lucide-react"
 
 export function MobileSubjectList() {
   const [query, setQuery] = useState("")
@@ -66,6 +66,15 @@ export function MobileSubjectList() {
     "Hindi Cinema Mein Samajik Sarokar"
   ]
 
+  const aecCourses =  [
+  "English Language Skills for Sciences",
+  "English Language Skills for Humanities and Other BA Programmes",
+  "General Foundation Course in English",
+  "English Language Skills for Commerce and Management",
+  "Modern Standard Arabic"
+];
+
+
   // Filtering function
   const filter = (items) =>
     items.filter((item) =>
@@ -94,27 +103,53 @@ export function MobileSubjectList() {
         </div>
       </div>
 
-      {/* Major Subjects */}
-      <SubjectCategory title="Major Subjects" subtitle="Core discipline courses" icon={<GraduationCap />} items={filter(majorSubjects)} />
+            {/* Major Subjects */}
+        <SubjectCategory
+          title="Major Subjects"
+          subtitle="Core discipline courses"
+          icon={<GraduationCap />}
+          iconColor="text-indigo-600 bg-indigo-100"
+          items={filter(majorSubjects)}
+        />
 
-      {/* Minor Subjects */}
-      <SubjectCategory title="Minor Subjects" subtitle="Elective and specialized courses" icon={<Book />} items={filter(minorSubjects)} />
+        {/* Minor Subjects */}
+        <SubjectCategory
+          title="Minor Subjects"
+          subtitle="Elective and specialized courses"
+          icon={<Book />}
+          iconColor="text-emerald-600 bg-emerald-100"
+          items={filter(minorSubjects)}
+        />
 
-      {/* MDC Courses */}
-      <SubjectCategory title="MDC Courses" subtitle="Multi-Disciplinary Courses" icon={<Library />} items={filter(mdcCourses)} />
+        {/* MDC Courses */}
+        <SubjectCategory
+          title="MDC Courses"
+          subtitle="Multi-Disciplinary Courses"
+          icon={<Library />}
+          iconColor="text-amber-600 bg-amber-100"
+          items={filter(mdcCourses)}
+        />
+
+        {/* AEC Courses */}
+        <SubjectCategory
+          title="AEC Courses"
+          subtitle="Ability Enhancement Courses"
+          icon={<Brain />}
+          iconColor="text-rose-600 bg-rose-100"
+          items={filter(aecCourses)}
+        />
     </div>
   )
 }
 
 // Reusable Category Component
-function SubjectCategory({ title, subtitle, icon, items }) {
-  // If no search results, don't display the whole section
+function SubjectCategory({ title, subtitle, icon, items, iconColor }) {
   if (items.length === 0) return null
 
   return (
     <div className="rounded-xl border border-border bg-background shadow-sm">
       <div className="flex items-center gap-3 p-4 border-b">
-        <div className="p-2 rounded-lg bg-primary/10 text-primary">
+        <div className={`p-2 rounded-lg ${iconColor}`}>
           {icon}
         </div>
         <div>
@@ -122,7 +157,6 @@ function SubjectCategory({ title, subtitle, icon, items }) {
           <p className="text-sm text-muted-foreground">{subtitle}</p>
         </div>
       </div>
-
       <div className="p-4">
         <div className="grid grid-cols-1 gap-2">
           {items.map((subject) => (
@@ -139,3 +173,4 @@ function SubjectCategory({ title, subtitle, icon, items }) {
     </div>
   )
 }
+

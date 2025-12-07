@@ -7,18 +7,18 @@ export function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky  top-0 z-50 w-full border-b border-border  backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#FAF8E4]">
         
         {/* Top Bar */}
         <div className="flex h-16 items-center justify-between">
           
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-              <BookOpen className="h-5 w-5 text-primary-foreground" />
+            <div className="flex h-15 w-15 items-center justify-center rounded-lg bg-primary">
+              <img src="/kotta.png" alt="" />
             </div>
-            <span className="text-xl font-bold text-foreground">NotesHub</span>
+            <span className="text-xl font-bold text-foreground">Kotta Note</span>
           </Link>
 
           {/* Desktop Nav */}
