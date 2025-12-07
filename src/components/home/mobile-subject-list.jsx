@@ -103,7 +103,7 @@ export function MobileSubjectList() {
       <div className="rounded-xl border border-border bg-background shadow-sm">
         <div className="flex items-center gap-3 p-4 border-b">
           <div className="p-2 rounded-lg bg-accent/10">
-            <Book className="h-6 w-6 text-accent-foreground" />
+            <Book className="h-6 w-6 text-accent" />
           </div>
           <div>
             <h2 className="text-lg font-semibold text-foreground">Minor Subjects</h2>
