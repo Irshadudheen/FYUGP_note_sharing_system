@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import useAuthStore from '@/store/authStore.js';
+import useAuthStore from '../../../store/authstore';
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "@/utils/firebase.js";
 function GoogleLoginButton({role,authType}) {
