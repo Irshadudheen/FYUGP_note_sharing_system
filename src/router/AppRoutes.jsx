@@ -13,6 +13,7 @@ import OnboardingForm from "../pages/profile/onBoarding.jsx";
 import StudentLoginPage from "../pages/auth/student/page.jsx";
 import TeacherLoginPage from "../pages/auth/teacher/page.jsx";
 import AdminLoginPage from "../pages/auth/admin/page.jsx";
+import NotesListPage from "../pages/notes/list/page.jsx";
 
 
 
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
       {path:'student-login', element: <StudentLoginPage userType="student"/>},
       {path:'teacher-login', element: <TeacherLoginPage userType="teacher"/>},
       {path:'adimn-login', element: <AdminLoginPage userType="admin"/>},
+      {path:'notes', element: <NotesListPage/>},
       {
         path: "profile/student",
         element: (

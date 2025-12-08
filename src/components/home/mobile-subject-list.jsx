@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
 import { Book, GraduationCap, Library, Search, Brain, ChevronDown } from "lucide-react"
 import { useAutoAnimate } from "@formkit/auto-animate/react"
+import { useNavigate } from "react-router-dom"
 
 export function MobileSubjectList() {
   const [query, setQuery] = useState("")
+ 
   const [openCategory, setOpenCategory] = useState(null)
 
   const majorSubjects = [
@@ -172,7 +174,7 @@ function SubjectCategory({
   onToggle 
 }) {
   const [parent] = useAutoAnimate({ duration: 300 })
-
+ const navigate = useNavigate()
   if (items.length === 0) return null
 
   return (
@@ -204,6 +206,7 @@ function SubjectCategory({
               {items.map((subject) => (
                 <button
                   key={subject}
+                  onClick={()=>navigate('/notes')}
                   className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors text-left w-full"
                 >
                   <span className="font-medium text-foreground">{subject}</span>

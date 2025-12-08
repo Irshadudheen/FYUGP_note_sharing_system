@@ -18,7 +18,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <div className="flex h-15 w-15 items-center justify-center rounded-lg ">
-              <img src="/kotta.png" alt="" />
+              <img src="/kotta.png" alt="kotta logo" draggable={false} />
             </div>
             <span className="text-xl font-bold text-foreground">Kotta Note</span>
           </Link>
