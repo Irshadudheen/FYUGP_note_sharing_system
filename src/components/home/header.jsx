@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom"
 import { BookOpen, Menu, X } from "lucide-react"
+import useAuthStore from "../../store/authstore";
 import { useState } from "react"
 
 export function Header() {
+    const { isAuthenticated, user, logout, role ,profileStrength,setProfileStrength} = useAuthStore();
   const navigate = useNavigate()
   const [open, setOpen] = useState(false)
-
+  console.log(isAuthenticated,'header auth',user)
   return (
     <header className="sticky  top-0 z-50 w-full border-b border-border  backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#FAF8E4]">
@@ -45,6 +47,21 @@ export function Header() {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
+            {(isAuthenticated && user) ? (
+              <>
+                <span className="text-sm font-medium text-foreground">
+                  Welcome, {user.firstName || user.email}!
+                </span>
+                <button
+                  onClick={logout}
+                  className="px-4 py-2 text-sm font-medium rounded-md border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+
             <button
               onClick={() => navigate("/teacher-login")}
               className="px-4 py-2 text-sm font-medium rounded-md border border-[#330033] text-[#330033] hover:bg-[#330033] hover:text-white transition"
@@ -62,6 +79,8 @@ export function Header() {
             <button className="px-4 py-2 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition">
               Get Started
             </button>
+              </>
+            )}
           </div>
 
           {/* Mobile Hamburger */}
@@ -89,7 +108,21 @@ export function Header() {
             <a href="#about" className="block text-sm font-medium text-muted-foreground hover:text-foreground">
               About
             </a>
-
+            {(isAuthenticated && user) ? (
+              <>
+                <span className="block text-sm font-medium text-foreground">
+                  Welcome, {user.firstName || user.email}!
+                </span>
+                <button
+                  onClick={logout}
+                  className="w-full px-4 py-2 text-sm font-medium rounded-md border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+              
             <button
               onClick={() => navigate("/teacher-login")}
               className="w-full px-4 py-2 text-sm font-medium rounded-md border border-[#330033] text-[#330033] hover:bg-[#330033] hover:text-white transition"
@@ -103,7 +136,8 @@ export function Header() {
             >
               Student Login
             </button>
-
+              </>
+            )}
             <button className="w-full px-4 py-2 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition">
               Get Started
             </button>
