@@ -98,7 +98,7 @@ export function NotesListGrid() {
           <p className="mt-2 text-sm text-[#8F6127]">Try adjusting your search query</p>
         </div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-2 lg:grid-cols-3">
           {filteredNotes.map((note) => (
             <div
               key={note.id}
@@ -107,7 +107,7 @@ export function NotesListGrid() {
               {/* Header */}
               <div className="mb-3 flex items-start justify-between">
                 <img src="/kotta.png" className="h-15 w-15 " draggable={false} />
-                <span className="text-xs bg-[#8F6127] text-white px-2 py-1 rounded-md">
+                <span className="text-[6px] sm:text-[11px] lg:text-xs bg-[#8F6127] text-white px-2 py-1 rounded-md text-nowrap">
                   {note.department}
                 </span>
               </div>
@@ -124,17 +124,22 @@ export function NotesListGrid() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Download className="h-4 w-4" />
-                  <span>{note.downloads} downloads</span>
+                  <span>{note.downloads}<span className="hidden lg:block">downloads</span> </span>
                 </div>
               </div>
 
               {/* Footer */}
-              <button
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-black hover:bg-[#8F6127] hover:text-white transition"
-              >
+              <div className="mt-5 flex w-full items-center justify-between gap-3">
+              <button className="flex w-1/2 items-center justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-black hover:bg-[#8F6127] hover:text-white transition">
+                <FileText className="h-4 w-4" />
+               <span className="hidden lg:block"> View </span>
+            </button>
+
+            <button className="flex w-1/2 items-center bg-[#8F6127] justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-white hover:bg-[#8a5617] hover:text-white transition">
                 <Download className="h-4 w-4" />
-                Download Notes
-              </button>
+              <span className="hidden lg:block"> Download </span> 
+            </button>
+            </div>
             </div>
           ))}
         </div>

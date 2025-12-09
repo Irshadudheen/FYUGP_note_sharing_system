@@ -7,11 +7,7 @@ export function LoginForm({ userType, title, description }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleGoogleLogin = () => {
-    console.log("Google login for:", userType)
-    // TODO - Integrate Google OAuth Redirect
-  }
-
+ 
   const handleAdminLogin = (e) => {
     e.preventDefault()
     console.log("Admin login:", { email, password })
@@ -19,7 +15,7 @@ export function LoginForm({ userType, title, description }) {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 border rounded-xl shadow-sm bg-white">
+    <div className="w-full max-w-md mx-auto p-6 border rounded-xl shadow-sm ">
       {/* Title */}
       <div className="space-y-1 mb-6 text-center">
         <h1 className="text-2xl font-bold">{title}</h1>

@@ -9,7 +9,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   console.log(isAuthenticated,'header auth',user)
   return (
-    <header className="sticky  top-0 z-50 bg-[#FAF8E4] w-full border-b border-border  backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky  top-0 z-50 bg-[#FAF8E4] w-full border-b border-border   ">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#FAF8E4]">
         
         {/* Top Bar */}
@@ -64,14 +64,14 @@ export function Header() {
 
             <button
               onClick={() => navigate("/teacher-login")}
-              className="px-4 py-2 text-sm font-medium rounded-md border border-[#330033] text-[#330033] hover:bg-[#330033] hover:text-white transition"
+              className="px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
             >
               Teacher Login
             </button>
 
             <button
               onClick={() => navigate("/student-login")}
-              className="px-4 py-2 text-sm font-medium rounded-md border border-[#540054] text-[#540054] hover:bg-[#540054] hover:text-white transition"
+              className="px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
             >
               Student Login
             </button>
@@ -123,14 +123,14 @@ export function Header() {
               
             <button
               onClick={() => navigate("/teacher-login")}
-              className="w-full px-4 py-2 text-sm font-medium rounded-md border border-[#330033] text-[#330033] hover:bg-[#330033] hover:text-white transition"
+              className="w-full px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
             >
               Teacher Login
             </button>
 
             <button
               onClick={() => navigate("/student-login")}
-              className="w-full px-4 py-2 text-sm font-medium rounded-md border border-[#540054] text-[#540054] hover:bg-[#540054] hover:text-white transition"
+              className="w-full px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
             >
               Student Login
             </button>
