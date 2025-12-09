@@ -50,7 +50,7 @@ export function Header() {
             {(isAuthenticated && user) ? (
               <>
                 <span className="text-sm font-medium text-foreground">
-                  Welcome, {user.firstName || user.email}!
+                  Welcome, {user.name || user.email}!
                 </span>
                 <button
                   onClick={logout}
@@ -109,7 +109,7 @@ export function Header() {
             {(isAuthenticated && user) ? (
               <>
                 <span className="block text-sm font-medium text-foreground">
-                  Welcome, {user.firstName || user.email}!
+                  Welcome, {user.name || user.email}!
                 </span>
                 <button
                   onClick={logout}

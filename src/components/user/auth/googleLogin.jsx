@@ -8,19 +8,14 @@ function GoogleLoginButton({role,authType}) {
     
    const handleGoogleLogin = async () => {
     try {
-      if(authType==='Sign In'){
+    
         const result = await signInWithPopup(auth, googleProvider);
-        const idToken = await result.user.getIdToken();
-      await googleAuthLogin(idToken,'google',role,result.user.email);
-     navigate("/");
-      }else{
-        const result = await signInWithPopup(auth, googleProvider);
-
+      console.log(result,'google login result')
       const idToken = await result.user.getIdToken();
-      await googleAuthRegister(idToken,'google',role,result.user.email);
-     navigate('/profile/onboarding',{state:{from:'login',role}})
+      await googleAuthRegister(idToken,'google',role,result.user.email,result.user.displayName);
+     navigate("/");
 
-      }
+      
       
     } catch (error) {
       console.error("Google login error:", error);

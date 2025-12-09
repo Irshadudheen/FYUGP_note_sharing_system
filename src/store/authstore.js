@@ -43,10 +43,10 @@ const useAuthStore = create(
         });
           return true;
         },
-        googleAuthRegister: async (googleToken,authType,userType,email) => {
+        googleAuthRegister: async (googleToken,authType,userType,email,name) => {
           set({ isLoading: true, error: null });
             await decodeToken(googleToken)
-          const { data, error } = await AuthService.registerService({googleToken,authType,userType,email});
+          const { data, error } = await AuthService.registerService({googleToken,authType,userType,email,name});
 
           if (!data || error) {
             set({ error: error, isLoading: false });
