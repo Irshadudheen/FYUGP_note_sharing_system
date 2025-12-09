@@ -9,7 +9,7 @@ export function Header() {
   const [open, setOpen] = useState(false)
   console.log(isAuthenticated,'header auth',user)
   return (
-    <header className="sticky  top-0 z-50 w-full border-b border-border  backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky  top-0 z-50 bg-[#FAF8E4] w-full border-b border-border  backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 bg-[#FAF8E4]">
         
         {/* Top Bar */}
@@ -76,9 +76,7 @@ export function Header() {
               Student Login
             </button>
 
-            <button className="px-4 py-2 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition">
-              Get Started
-            </button>
+            
               </>
             )}
           </div>
@@ -138,9 +136,7 @@ export function Header() {
             </button>
               </>
             )}
-            <button className="w-full px-4 py-2 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition">
-              Get Started
-            </button>
+            
           </div>
         )}
       </div>

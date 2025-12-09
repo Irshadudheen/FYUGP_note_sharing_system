@@ -14,6 +14,7 @@ import StudentLoginPage from "../pages/auth/student/page.jsx";
 import TeacherLoginPage from "../pages/auth/teacher/page.jsx";
 import AdminLoginPage from "../pages/auth/admin/page.jsx";
 import NotesListPage from "../pages/notes/list/page.jsx";
+import NotesUploadPage from "../pages/notes/upload/page.jsx";
 
 
 
@@ -26,10 +27,11 @@ export const router = createBrowserRouter([
     element: <AppLayout />, 
     children: [
       { path: "/", element: <LandingPage/> },
-      {path:'student-login', element: <StudentLoginPage userType="student"/>},
-      {path:'teacher-login', element: <TeacherLoginPage userType="teacher"/>},
-      {path:'adimn-login', element: <AdminLoginPage userType="admin"/>},
+      {path:'student-login', element:<UnProtectedRoute> <StudentLoginPage userType="student"/></UnProtectedRoute>},
+      {path:'teacher-login', element:<UnProtectedRoute> <TeacherLoginPage userType="teacher"/></UnProtectedRoute>},
+      {path:'adimn-login', element: <UnProtectedRoute> <AdminLoginPage userType="admin"/></UnProtectedRoute>},
       {path:'notes', element: <NotesListPage/>},
+      {path:'upload', element: <NotesUploadPage/>},
       {
         path: "profile/student",
         element: (

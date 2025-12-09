@@ -4,7 +4,7 @@ import { Upload, FileText, CheckCircle2 } from "lucide-react"
 export function NotesUploadForm() {
   const [subjectName, setSubjectName] = useState("")
   const [departmentName, setDepartmentName] = useState("")
-  const [file, setFile] = useState<File | null>(null)
+  const [file, setFile] = useState(null)
   const [isUploading, setIsUploading] = useState(false)
   const [uploadSuccess, setUploadSuccess] = useState(false)
 
@@ -30,14 +30,14 @@ export function NotesUploadForm() {
   }
 
   return (
-    <div className="w-full max-w-xl mx-auto rounded-xl border border-gray-700 bg-[#0A1929] shadow-lg p-6">
-      <h2 className="text-2xl font-semibold mb-1 text-white">Share Your Notes</h2>
-      <p className="text-gray-400 mb-6">Fill in the details below to upload your study materials</p>
+    <div className="w-full max-w-xl mx-auto rounded-xl border border-[#8F6127] bg-[#FAF8E4] shadow-lg p-6">
+      <h2 className="text-2xl font-semibold mb-1 text-[#8F6127]">Share Your Notes</h2>
+      <p className="text-[#8F6127] mb-6">Fill in the details below to upload your study materials</p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Subject */}
         <div>
-          <label className="text-gray-200 block mb-1">Subject Name</label>
+          <label className="text-[#8F6127] block mb-1">Subject Name</label>
           <input
             type="text"
             placeholder="e.g., Data Structures and Algorithms"
@@ -45,13 +45,13 @@ export function NotesUploadForm() {
             onChange={(e) => setSubjectName(e.target.value)}
             disabled={isUploading}
             required
-            className="w-full rounded-md bg-gray-800 border border-gray-600 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full rounded-md bg-[#FAF8E4] border border-gray-600 text-black px-3 py-2 focus:ring-2 focus:ring-[#8F6127] outline-none"
           />
         </div>
 
         {/* Department */}
         <div>
-          <label className="text-gray-200 block mb-1">Department Name</label>
+          <label className="text-[#8F6127] block mb-1">Department Name</label>
           <input
             type="text"
             placeholder="e.g., Computer Science"
@@ -59,7 +59,7 @@ export function NotesUploadForm() {
             onChange={(e) => setDepartmentName(e.target.value)}
             disabled={isUploading}
             required
-            className="w-full rounded-md bg-gray-800 border border-gray-600 text-gray-200 px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full rounded-md bg-[#FAF8E4] border border-[#8F6127] text-black px-3 py-2 focus:ring-2 focus:ring-[#8F6127] outline-none"
           />
         </div>
 
@@ -67,14 +67,14 @@ export function NotesUploadForm() {
         <div>
           <label className="text-gray-200 block mb-2">Upload File</label>
           <label
-            htmlFor="file"
-            className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-600 bg-gray-800 p-6 hover:border-blue-500 hover:bg-gray-700 transition"
-          >
-            <Upload className="h-6 w-6 text-gray-400" />
-            <span className="text-sm text-gray-400">
-              {file ? file.name : "Choose a file or drag it here"}
-            </span>
-          </label>
+  htmlFor="file"
+  className="group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-600 bg-[#FAF8E4] p-6 hover:border-[#FAF8E4] hover:bg-[#8F6127] transition"
+>
+  <Upload className="h-6 w-6 text-gray-400 group-hover:text-white" />
+  <span className="text-sm text-gray-400 group-hover:text-white">
+    {file ? file.name : "Choose a file or drag it here"}
+  </span>
+</label>
           <input
             id="file"
             type="file"
@@ -105,7 +105,7 @@ export function NotesUploadForm() {
         <button
           type="submit"
           disabled={isUploading}
-          className="w-full py-3 rounded-md bg-blue-600 hover:bg-blue-700 transition text-white font-semibold disabled:bg-gray-600"
+          className="w-full py-3 rounded-md bg-[#8F6127] hover:bg-[#7d511a] transition text-white font-semibold disabled:bg-gray-600"
         >
           {isUploading ? "Uploading..." : "Upload Notes"}
         </button>

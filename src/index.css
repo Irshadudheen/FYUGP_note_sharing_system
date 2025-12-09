@@ -116,6 +116,9 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+body{
+  background-color:#FAF8E4;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -125,3 +128,4 @@
     
   }
 }
+

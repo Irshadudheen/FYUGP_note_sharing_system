@@ -210,7 +210,7 @@ function SubjectCategory({
                   className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors text-left w-full"
                 >
                   <span className="font-medium text-foreground">{subject}</span>
-                  <span className="text-sm text-muted-foreground">View Notes →</span>
+                 
                 </button>
               ))}
             </div>
