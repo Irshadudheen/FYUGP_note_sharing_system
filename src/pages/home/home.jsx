@@ -9,7 +9,7 @@ import { MobileSubjectList } from "@/components/home/mobile-subject-list"
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#FAF8E4]">
-      <Header />
+     
       <main className="mx-auto max-w-7xl px-4 sm:px-10 lg:px-12">
         <div className="hidden md:block">
           <HeroSection />

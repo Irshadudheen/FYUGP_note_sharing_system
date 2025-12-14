@@ -1,4 +1,4 @@
-import { Header } from "@/components/home/header"
+
 import { Footer } from "@/components/home/footer"
 import { NotesListGrid } from "@/components/note/notes-list-grid"
 import { Link } from "react-router-dom"
@@ -7,7 +7,7 @@ import { Upload } from "lucide-react"
 export default function NotesListPage() {
   return (
     <div className="min-h-screen bg-[#FAF8E4]">
-      <Header />
+     
       <main className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 
         {/* Title + Upload Button */}

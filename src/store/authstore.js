@@ -111,14 +111,14 @@ const useAuthStore = create(
           return true;
         },
         verifyOtp: async (body) => {
-  set({ isLoading: true, error: null });
-  const { data, error } = await AuthService.otpVerificationService(body);
+        set({ isLoading: true, error: null });
+        const { data, error } = await AuthService.otpVerificationService(body);
 
-  if (error) {
-    set({ error, isLoading: false });
-    toast.error('Invalid OTP');
-    return false;
-  }
+        if (error) {
+          set({ error, isLoading: false });
+          toast.error('Invalid OTP');
+          return false;
+        }
 
   const { user } = data.data;
   const {accessToken,refreshToken} = data.data
@@ -188,7 +188,7 @@ const useAuthStore = create(
 
         setHasHydrated: async (state) => {
           if (state.isAuthenticated) {
-            await getState().refreshToken();
+            await getState().refreshAccessToken();
             await getState().refreshUser();
             return;
           }

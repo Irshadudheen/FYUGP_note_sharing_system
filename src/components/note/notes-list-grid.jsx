@@ -124,7 +124,7 @@ export function NotesListGrid() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Download className="h-4 w-4" />
-                  <span>{note.downloads}<span className="hidden lg:block">downloads</span> </span>
+                  <span>{note.downloads}</span>
                 </div>
               </div>
 

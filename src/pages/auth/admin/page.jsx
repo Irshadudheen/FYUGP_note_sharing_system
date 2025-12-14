@@ -5,10 +5,10 @@ import { Header } from "../../../components/home/header"
 
 export default function AdminLoginPage() {
   return (
-    <div className="min-h-screen  flex flex-col bg-[#FAF8E4]">
-      <Header/>
+    <div className="  flex flex-col bg-[#FAF8E4]">
 
-      <div className="flex-1 flex items-center justify-center p-4">
+
+      <div className="flex-1 flex items-center justify-center p-4 mt-15">
         <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
           <div className="hidden lg:flex flex-col justify-center space-y-6">
             <div className="flex items-center gap-3">

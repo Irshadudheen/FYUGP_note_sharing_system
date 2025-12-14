@@ -1,15 +1,13 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import AppLayout from "../layout/Applayout.jsx";
 import LandingPage from "../pages/home/home.jsx";
-import ConditionalLanding from "../components/ConditionalLanding.jsx";
-import LoginPage from "../pages/auth/auth.jsx";
+
 import InputOtpForm from "../components/user/auth/inputOtpForm.jsx";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { env } from "../config/env.js";
+
 import ForgotPassword from "../components/user/auth/forgotPassowrd.jsx";
 import UnProtectedRoute from "./UnProtectedRoutes";
 import ProtectedRoute from "./ProtectedRoutes";
-import OnboardingForm from "../pages/profile/onBoarding.jsx";
+
 import StudentLoginPage from "../pages/auth/student/page.jsx";
 import TeacherLoginPage from "../pages/auth/teacher/page.jsx";
 import AdminLoginPage from "../pages/auth/admin/page.jsx";
