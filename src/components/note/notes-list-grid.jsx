@@ -62,7 +62,19 @@ const sampleNotes = [
 export function NotesListGrid() {
   const [searchQuery, setSearchQuery] = useState("")
   const [filteredNotes, setFilteredNotes] = useState(sampleNotes)
+  const downloadFile = async (url, filename) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
 
+  const link = document.createElement("a");
+  link.href = window.URL.createObjectURL(blob);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  window.URL.revokeObjectURL(link.href);
+};
   const handleSearch = (query) => {
     setSearchQuery(query)
     const filtered = sampleNotes.filter(
@@ -93,7 +105,7 @@ export function NotesListGrid() {
       {/* No results */}
       {filteredNotes.length === 0 ? (
         <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
-          <img src="/emptykotta.png" className="mb-4 h-30 w-30 " draggable={false} />
+          <img src="/emptykotta.webp" className="mb-4 h-30 w-30 " draggable={false} />
           <h3 className="text-lg font-semibold text-[#8F6127]">No notes found</h3>
           <p className="mt-2 text-sm text-[#8F6127]">Try adjusting your search query</p>
         </div>
@@ -106,7 +118,7 @@ export function NotesListGrid() {
             >
               {/* Header */}
               <div className="mb-3 flex items-start justify-between">
-                <img src="/kotta.png" className="h-15 w-15 " draggable={false} />
+                <img src="/kotta.webp" className="h-15 w-15 " draggable={false} />
                 <span className="text-[6px] sm:text-[11px] lg:text-xs bg-[#8F6127] text-white px-2 py-1 rounded-md text-nowrap">
                   {note.department}
                 </span>
@@ -135,7 +147,12 @@ export function NotesListGrid() {
                <span className="hidden lg:block"> View </span>
             </button>
 
-            <button className="flex w-1/2 items-center bg-[#8F6127] justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-white hover:bg-[#8a5617] hover:text-white transition">
+            <button onClick={() =>
+                  downloadFile(
+                    'https://iqrahire-uploads.s3.ap-south-1.amazonaws.com/notes/98c246ed-2bf5-4d0d-ad21-93aec4393459.pdf',
+                    'adfa'+ ".pdf"
+                  )
+                } className="flex w-1/2 items-center bg-[#8F6127] justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-white hover:bg-[#8a5617] hover:text-white transition">
                 <Download className="h-4 w-4" />
               <span className="hidden lg:block"> Download </span> 
             </button>

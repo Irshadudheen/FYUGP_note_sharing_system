@@ -20,7 +20,8 @@ export function NotesUploadForm() {
   const [fileName, setFileName] = useState("");
 
   
-console.log(errors)
+  
+
     /* ---------- FILE HANDLER ---------- */
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -67,7 +68,11 @@ console.log(errors)
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Title */}
         <div>
-          <label className="text-[#8F6127] block mb-1">Title</label>
+          <label className="text-[#8F6127]  mb-1 flex justify-between">Title {errors.title && (
+            <p className="text-red-500 text-sm">
+              {errors.title.message}
+            </p>
+          )}</label>
           <input
               {...register("title")}
             placeholder="e.g., Computer Science Notes"
@@ -77,14 +82,13 @@ console.log(errors)
             className="w-full rounded-md bg-[#FAF8E4] border border-gray-600 text-black px-3 py-2 focus:ring-2 focus:ring-[#8F6127] outline-none"
           />
         </div>
-         {errors.title && (
-            <p className="text-red-500 text-sm">
-              {errors.title.message}
-            </p>
-          )}
+         
         {/* Subject */}
         <div>
-          <label className="text-[#8F6127] block mb-1">Subject</label>
+          <label className="text-[#8F6127]  mb-1 flex justify-between">Subject {errors.subject && (
+            <p className="text-red-500 text-sm">
+              {errors.subject.message}
+            </p>)}</label>
           <input
               {...register("subject")}
             placeholder="e.g., Data Structures and Algorithms"
@@ -94,14 +98,13 @@ console.log(errors)
             className="w-full rounded-md bg-[#FAF8E4] border border-gray-600 text-black px-3 py-2 focus:ring-2 focus:ring-[#8F6127] outline-none"
           />
         </div>
-         {errors.subject && (
-            <p className="text-red-500 text-sm">
-              {errors.subject.message}
-            </p>
-          )}
+        
           {/* Semester */}
         <div>
-          <label className="text-[#8F6127] block mb-1">Semester</label>
+          <label className="text-[#8F6127]  mb-1 flex justify-between">Semester {errors.semester && (
+            <p className="text-red-500 text-sm">
+              {errors.semester.message}
+            </p>)}</label>
           <select
             {...register("semester")}
             disabled={isUploading}
@@ -116,14 +119,13 @@ console.log(errors)
             ))}
           </select>
         </div>
-         {errors.semester && (
-            <p className="text-red-500 text-sm">
-              {errors.semester.message}
-            </p>
-          )}
+        
         {/* Department */}
         <div>
-           <label className="text-[#8F6127] block mb-1">Department</label>
+           <label className="text-[#8F6127]  mb-1 flex justify-between">Department {errors.department && (
+            <p className="text-red-500 text-sm">
+              {errors.department.message}
+            </p>)}</label>
           <select
             {...register("department")}
             disabled={isUploading}
@@ -139,11 +141,7 @@ console.log(errors)
           </select>
 
           
-          {errors.department && (
-            <p className="text-red-500 text-sm">
-              {errors.department.message}
-            </p>
-          )}
+          
 
         </div>
           
@@ -153,7 +151,9 @@ console.log(errors)
           <label
   htmlFor="file"
   className="group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-600 bg-[#FAF8E4] p-6 hover:border-[#FAF8E4] hover:bg-[#8F6127] transition"
->
+>{errors.file && (
+            <p className="text-red-500 text-sm">{errors.file.message}</p>
+          )}
   <Upload className="h-6 w-6 text-gray-400 group-hover:text-white" />
   <span className="text-sm text-gray-400 group-hover:text-white">
     {fileName || "Choose a file or drag it here"}
@@ -167,9 +167,7 @@ console.log(errors)
             onChange={handleFileChange}
             disabled={isUploading}
           />
-          {errors.file && (
-            <p className="text-red-500 text-sm">{errors.file.message}</p>
-          )}
+          
        
 
           {fileName && (
@@ -192,7 +190,7 @@ console.log(errors)
 
        <button
           type="submit"
-          disabled={isUploading }
+          disabled={isUploading}
           className="w-full py-3 rounded-md bg-[#8F6127] text-white font-semibold cursor-pointer"
         >
 
