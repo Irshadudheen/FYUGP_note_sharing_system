@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { uploadNotesSchema,departments } from "@/schema/noteschema";
 import { NotesService } from "../../service/uploadservice";
+import { useNavigate } from "react-router-dom";
 
 export function NotesUploadForm() {
+  const navigate = useNavigate();
     const {
     register,
     handleSubmit,
@@ -52,6 +54,9 @@ export function NotesUploadForm() {
       setUploadSuccess(true);
       reset();
       setFileName("");
+      setTimeout(() => {
+        setUploadSuccess(false); navigate(-1)}, 3000);
+      
     } catch (err) {
       console.error(err);
     } finally {
