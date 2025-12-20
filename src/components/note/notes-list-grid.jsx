@@ -1,68 +1,51 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Download, Search, FileText, User } from "lucide-react"
-
+import { NotesService } from "../../service/noteservice"
+import { useNavigate } from "react-router-dom"
+import { NotesGridSkeleton } from "./noteGridskleton"
+import useAuthStore from "../../store/authstore"
 // Sample data from backend
-const sampleNotes = [
-  {
-    id: 1,
-    title: "Data Structures Complete Notes",
-    subject: "Data Structures and Algorithms",
-    department: "Computer Science",
-    uploadedBy: "Rajesh Kumar",
-    uploadDate: "2024-01-15",
-    downloads: 245,
-  },
-  {
-    id: 2,
-    title: "Calculus II - Chapter 1-5",
-    subject: "Calculus II",
-    department: "Mathematics",
-    uploadedBy: "Priya Sharma",
-    uploadDate: "2024-01-14",
-    downloads: 187,
-  },
-  {
-    id: 3,
-    title: "Digital Electronics Lab Manual",
-    subject: "Digital Electronics",
-    department: "Electronics Engineering",
-    uploadedBy: "Amit Patel",
-    uploadDate: "2024-01-13",
-    downloads: 156,
-  },
-  {
-    id: 4,
-    title: "Environmental Studies Summary",
-    subject: "Environmental Studies",
-    department: "MDC Course",
-    uploadedBy: "Sneha Reddy",
-    uploadDate: "2024-01-12",
-    downloads: 203,
-  },
-  {
-    id: 5,
-    title: "Python Programming Basics",
-    subject: "Programming with Python",
-    department: "Computer Science",
-    uploadedBy: "Vikram Singh",
-    uploadDate: "2024-01-11",
-    downloads: 312,
-  },
-  {
-    id: 6,
-    title: "Organic Chemistry Reactions",
-    subject: "Organic Chemistry",
-    department: "Chemistry",
-    uploadedBy: "Anjali Gupta",
-    uploadDate: "2024-01-10",
-    downloads: 178,
-  },
-]
 
 export function NotesListGrid() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [filteredNotes, setFilteredNotes] = useState(sampleNotes)
+   const { isAuthenticated, user, logout, role ,profileStrength,setProfileStrength} = useAuthStore();
+ const [searchQuery, setSearchQuery] = useState("")
+const [selectedSemester, setSelectedSemester] = useState("")
+const [selectedModule, setSelectedModule] = useState("")
+const [notes, setNotes] = useState([])
+const [loading, setLoading] = useState(true)
+const navigate = useNavigate()
+useEffect(() => {
+  const timer = setTimeout(() => {
+    fetchNotes()
+  }, 400)
+
+  return () => clearTimeout(timer)
+}, [searchQuery, selectedSemester, selectedModule])
+const fetchNotes = async () => {
+  try {
+    setLoading(true)
+
+    const filters = {
+      search: searchQuery || undefined,
+      semester: selectedSemester || undefined,
+      module: selectedModule || undefined,
+    }
+
+    const res = await NotesService.getAllNotesService(1, 6, filters)
+    setNotes(res.data?.data?.notes || [])
+
+  } catch (err) {
+    console.error(err)
+    setNotes([])
+  } finally {
+    setLoading(false)
+  }
+}
   const downloadFile = async (url, filename) => {
+    if(!isAuthenticated){
+      navigate('/student-login')
+      return
+    }
   const response = await fetch(url);
   const blob = await response.blob();
 
@@ -75,19 +58,56 @@ export function NotesListGrid() {
 
   window.URL.revokeObjectURL(link.href);
 };
-  const handleSearch = (query) => {
-    setSearchQuery(query)
-    const filtered = sampleNotes.filter(
-      (note) =>
-        note.title.toLowerCase().includes(query.toLowerCase()) ||
-        note.subject.toLowerCase().includes(query.toLowerCase()) ||
-        note.department.toLowerCase().includes(query.toLowerCase()),
-    )
-    setFilteredNotes(filtered)
-  }
+  const handleSearch = (e) => {
+    
+  setSearchQuery(e.target.value)
+}
+
+
+ 
+const handleModuleChange = (value) => {
+  setSelectedModule(value)
+}
+const handleSemesterChange = (value) => {
+  setSelectedSemester(value)
+  setSelectedModule("")
+}
+
+
 
   return (
     <div className="space-y-6">
+      <div className="flex flex-wrap gap-3">
+  {/* Semester */}
+  <select
+    value={selectedSemester}
+    onChange={(e) => handleSemesterChange(e.target.value)}
+    className="rounded-lg border border-gray-700 bg-[#FAF8E4] px-4 py-2 text-black focus:ring-2 focus:ring-[#8F6127] outline-none"
+  >
+    <option value="">Select Semester</option>
+    {[1,2,3,4,5,6].map((sem) => (
+      <option key={sem} value={sem} className="bg-[#FAF8E4] selection:bg-amber-200">
+        Semester {sem}
+      </option>
+    ))}
+  </select>
+
+  {/* Module (Only show if semester selected) */}
+  {selectedSemester && (
+    <select
+      value={selectedModule}
+      onChange={(e) => handleModuleChange(e.target.value)}
+      className="rounded-lg border border-gray-700 bg-[#FAF8E4] px-4 py-2 text-black focus:ring-2 focus:ring-[#8F6127] outline-none"
+    >
+      <option value="">Select Module</option>
+      {[1,2,3,4,5].map((mod) => (
+        <option key={mod} value={mod}>
+          Module {mod}
+        </option>
+      ))}
+    </select>
+  )}
+</div>
       {/* Search bar */}
       <div className="flex items-center gap-2">
         <div className="relative flex-1">
@@ -96,14 +116,16 @@ export function NotesListGrid() {
             type="text"
             placeholder="Search by subject, department, or title..."
             value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
+            onChange={handleSearch}
             className="w-full rounded-lg bg-[#FAF8E4] border border-gray-700 text-black px-10 py-2 focus:ring-2 focus:ring-[#8F6127] outline-none"
           />
         </div>
       </div>
+      
+      {loading ? (
+  <NotesGridSkeleton count={6} />
 
-      {/* No results */}
-      {filteredNotes.length === 0 ? (
+) : notes && notes.length === 0 ?(
         <div className="flex min-h-[400px] flex-col items-center justify-center text-center">
           <img src="/emptykotta.webp" className="mb-4 h-30 w-30 " draggable={false} />
           <h3 className="text-lg font-semibold text-[#8F6127]">No notes found</h3>
@@ -111,7 +133,7 @@ export function NotesListGrid() {
         </div>
       ) : (
         <div className="grid gap-6 grid-cols-2 lg:grid-cols-3">
-          {filteredNotes.map((note) => (
+          { notes&&notes.map((note) => (
             <div
               key={note.id}
               className="flex flex-col rounded-xl border border-gray-700 bg-[#FAF8E4] p-5 shadow-md transition hover:shadow-lg"
@@ -132,25 +154,31 @@ export function NotesListGrid() {
               <div className="flex-1 mt-4 space-y-2 text-sm text-[#8F6127]">
                 <div className="flex items-center gap-2">
                   <User className="h-4 w-4" />
-                  <span>{note.uploadedBy}</span>
+                  <span>{note.userId&&note.userId.name}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Download className="h-4 w-4" />
-                  <span>{note.downloads}</span>
+                  <span>{note.downloadCount}</span>
                 </div>
               </div>
 
               {/* Footer */}
               <div className="mt-5 flex w-full items-center justify-between gap-3">
-              <button className="flex w-1/2 items-center justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-black hover:bg-[#8F6127] hover:text-white transition">
+              <button onClick={()=>{
+                if(!isAuthenticated){
+                  navigate('/student-login')
+                  return
+                }
+                window.location.href = note.noteUrl;
+              }} className="flex w-1/2 items-center justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-black hover:bg-[#8F6127] hover:text-white transition">
                 <FileText className="h-4 w-4" />
                <span className="hidden lg:block"> View </span>
             </button>
 
             <button onClick={() =>
                   downloadFile(
-                    'https://iqrahire-uploads.s3.ap-south-1.amazonaws.com/notes/98c246ed-2bf5-4d0d-ad21-93aec4393459.pdf',
-                    'adfa'+ ".pdf"
+                    note.noteUrl,
+                    note.title+ ".pdf"
                   )
                 } className="flex w-1/2 items-center bg-[#8F6127] justify-center gap-2 rounded-lg border border-[#8F6127] py-2 text-white hover:bg-[#8a5617] hover:text-white transition">
                 <Download className="h-4 w-4" />

@@ -120,6 +120,7 @@ export function MobileSubjectList() {
       {/* Major Subjects */}
       <SubjectCategory
         title="Major Subjects"
+   
         subtitle="Core discipline courses"
         icon={<GraduationCap />}
         iconColor="text-indigo-600 bg-indigo-100"
@@ -133,6 +134,7 @@ export function MobileSubjectList() {
         title="Minor Subjects"
         subtitle="Elective and specialized courses"
         icon={<Book />}
+        
         iconColor="text-emerald-600 bg-emerald-100"
         items={filter(minorSubjects)}
         isOpen={openCategory === "Minor Subjects"}

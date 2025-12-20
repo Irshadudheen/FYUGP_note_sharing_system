@@ -116,8 +116,8 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-body{
-  background-color:#FAF8E4;
+*{
+  user-select: none
 }
 @layer base {
   * {

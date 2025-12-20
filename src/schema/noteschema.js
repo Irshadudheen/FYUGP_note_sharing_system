@@ -28,7 +28,12 @@ export const uploadNotesSchema = z.object({
       (value) => ["1", "2", "3", "4", "5", "6", "7", "8"].includes(value),
       "Please select a valid semester"
     ),
-
+    module: z.string().min(1, "Please select a semester")
+    .refine(
+      (value) => ["1", "2", "3", "4", "5", "6", "7", "8"].includes(value),
+      "Please select a valid semester"
+    ),
+    isPublic: z.boolean().optional(),
     department: z.string()
   .min(1, "Please select a department")
   .refine(

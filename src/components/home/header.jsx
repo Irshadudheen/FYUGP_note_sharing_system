@@ -54,7 +54,7 @@ export function Header() {
                 </span>
                 <button
                   onClick={logout}
-                  className="px-4 py-2 text-sm font-medium rounded-md border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+                  className="px-4 py-2 text-sm cursor-pointer font-medium rounded-md border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
                 >
                   Logout
                 </button>
@@ -63,17 +63,10 @@ export function Header() {
               <>
 
             <button
-              onClick={() => navigate("/teacher-login")}
-              className="px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
-            >
-              Teacher Login
-            </button>
-
-            <button
               onClick={() => navigate("/student-login")}
-              className="px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-[#8F6127] hover:bg-[#8F6127] hover:text-white transition"
+              className="px-4 py-2 text-sm font-medium rounded-md border border-[#8F6127] text-white cursor-pointer hover:bg-[#704A1F] bg-[#8F6127] hover:text-white transition"
             >
-              Student Login
+             Login
             </button>
 
             

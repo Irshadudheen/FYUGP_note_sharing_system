@@ -30,10 +30,11 @@ export const NotesService = {
      Get All Notes (Pagination)
      page = 1, limit = 10
   ================================ */
-  getAllNotesService: async (page = 1, limit = 10) => {
+  getAllNotesService: async (page = 1, limit = 6,filters) => {
     try {
       const response = await axiosInstance.get(
-        `/note?page=${page}&limit=${limit}`,
+        `/note?page=${page}&limit=${limit}${
+    filters?.search ? `&search=${encodeURIComponent(filters.search)}` : ''}`,
         { withCredentials: true }
       );
 
